@@ -1,4 +1,4 @@
 <resources>
-    <string name="app_name">BasicAndroidApplication</string>
-
+    <string name="app_name">Employee Management System</string>
+    <string name="add_employee">Add New Employee</string>
 </resources>
