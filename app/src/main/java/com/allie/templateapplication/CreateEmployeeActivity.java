@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
+import com.allie.templateapplication.model.Employee;
 
 import com.allie.templateapplication.constants.ActivityCodes;
 
@@ -41,13 +42,20 @@ public class CreateEmployeeActivity extends Activity {
                 intent.putExtra("Title",title.getText().toString());
                 intent.putExtra("Role",role.getText().toString());
                 intent.putExtra("Tasks",tasks.getText().toString());*/
-                bundle.putString("Name",name.getText().toString());
-                bundle.putString("Title",title.getText().toString());
-                bundle.putString("Role",role.getText().toString());
-                bundle.putString("Tasks",tasks.getText().toString());
-                bundle.putString("Hobbies",hobbies.getText().toString());
-                bundle.putInt("Years",Integer.parseInt(years.getText().toString()));
-                intent.putExtras(bundle);
+//                bundle.putString("Name",name.getText().toString());
+//                bundle.putString("Title",title.getText().toString());
+//                bundle.putString("Role",role.getText().toString());
+//                bundle.putString("Tasks",tasks.getText().toString());
+//                bundle.putString("Hobbies",hobbies.getText().toString());
+//                bundle.putInt("Years",Integer.parseInt(years.getText().toString()));
+                Employee e = new Employee(name.getText().toString(),
+                        title.getText().toString(),
+                        role.getText().toString(),
+                        tasks.getText().toString(),
+                        hobbies.getText().toString(),
+                        Integer.parseInt((years.getText().toString())));
+//                intent.putExtras(bundle);
+                intent.putExtra("EmployeeParcel",e);
                 setResult(ActivityCodes.CREATE_EMPLOYEE_RESPONSE,intent);
                 finish();
                // startActivity(clickIntent);

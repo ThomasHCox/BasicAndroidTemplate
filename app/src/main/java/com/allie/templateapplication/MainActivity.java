@@ -48,6 +48,10 @@ import java.util.List;
 //EC - EC
 //Add second viewHolder
 
+//Homework 6
+//Instead of sending individually in bundle
+//Put parcel in bundle and do it that way
+
 public class MainActivity extends AppCompatActivity {
     private RecyclerAdapter mAdapter;
     private ActionBar mActionBar;
@@ -69,13 +73,13 @@ public class MainActivity extends AppCompatActivity {
                 String passedTitle = data.getStringExtra("Title");
                 String passedRole = data.getStringExtra("Role");
                 String passedTasks = data.getStringExtra("Tasks");*/
-                Bundle bundle = data.getExtras();
-                String passedName = bundle.getString("Name");
-                String passedTitle = bundle.getString("Title");
-                String passedRole = bundle.getString("Role");
-                String passedTasks = bundle.getString("Tasks");
-                String passedHobbies = bundle.getString("Hobbies");
-                int passedYears = bundle.getInt("Years", 0);
+//                Bundle bundle = data.getExtras();
+//                String passedName = bundle.getString("Name");
+//                String passedTitle = bundle.getString("Title");
+//                String passedRole = bundle.getString("Role");
+//                String passedTasks = bundle.getString("Tasks");
+//                String passedHobbies = bundle.getString("Hobbies");
+//                int passedYears = bundle.getInt("Years", 0);
 
 //                mList = new ArrayList<Employee>();
 //                Toast.makeText(getApplicationContext(),
@@ -85,7 +89,9 @@ public class MainActivity extends AppCompatActivity {
 //                            passedTasks,
 //                        Toast.LENGTH_LONG).show();
 //                Employee e = new Employee(passedName, passedTitle, passedRole, passedTasks);
-                Employee e = new Employee(passedName, passedTitle, passedRole, passedTasks, passedHobbies, passedYears);
+//                Employee e = new Employee(passedName, passedTitle, passedRole, passedTasks, passedHobbies, passedYears);
+                Employee e = data.getParcelableExtra("EmployeeParcel");
+
 //                //mList.add(e);
 //                mList.add(passedName);
                 //mAdapter.updateAdapter(mList);
