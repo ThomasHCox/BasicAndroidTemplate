@@ -16,13 +16,6 @@ public class Employee implements Parcelable {
     private String mHobbies;
     private int mYears;
 
-//    public Employee(String name, String title, String role, String task){
-//        mName = name;
-//        mTask = task;
-//        mTitle = title;
-//        mRole = role;
-//    }
-
     public Employee(String name, String title, String role, String task, String hobbies, int years){
         mName = name;
         mTask = task;

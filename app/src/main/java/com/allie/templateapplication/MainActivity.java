@@ -56,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerAdapter mAdapter;
     private ActionBar mActionBar;
     private Toolbar mToolbar;
-    private  List<Employee> mList = new ArrayList<Employee>();
+    private List<Employee> mList = new ArrayList<Employee>();
 
     @Override
     protected void onResume() {
@@ -67,38 +67,13 @@ public class MainActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if (requestCode == ActivityCodes.CREATE_EMPLOYEE_REQUEST){
-            if (resultCode == ActivityCodes.CREATE_EMPLOYEE_RESPONSE){
-           /*     String passedName = data.getStringExtra("Name");
-                String passedTitle = data.getStringExtra("Title");
-                String passedRole = data.getStringExtra("Role");
-                String passedTasks = data.getStringExtra("Tasks");*/
-//                Bundle bundle = data.getExtras();
-//                String passedName = bundle.getString("Name");
-//                String passedTitle = bundle.getString("Title");
-//                String passedRole = bundle.getString("Role");
-//                String passedTasks = bundle.getString("Tasks");
-//                String passedHobbies = bundle.getString("Hobbies");
-//                int passedYears = bundle.getInt("Years", 0);
+        if (requestCode == ActivityCodes.CREATE_EMPLOYEE_REQUEST) {
+            if (resultCode == ActivityCodes.CREATE_EMPLOYEE_RESPONSE) {
 
-//                mList = new ArrayList<Employee>();
-//                Toast.makeText(getApplicationContext(),
-//                            passedName + " " +
-//                            passedTitle + " " +
-//                            passedRole + " " +
-//                            passedTasks,
-//                        Toast.LENGTH_LONG).show();
-//                Employee e = new Employee(passedName, passedTitle, passedRole, passedTasks);
-//                Employee e = new Employee(passedName, passedTitle, passedRole, passedTasks, passedHobbies, passedYears);
                 Employee e = data.getParcelableExtra("EmployeeParcel");
-
-//                //mList.add(e);
-//                mList.add(passedName);
-                //mAdapter.updateAdapter(mList);
                 mAdapter.appendAdapter(e);
 
-            }
-            else if (resultCode == ActivityCodes.CREATE_EMPLOYEE_RESPONSE_CANCEL){
+            } else if (resultCode == ActivityCodes.CREATE_EMPLOYEE_RESPONSE_CANCEL) {
                 Toast.makeText(getApplicationContext(), "You cancelled without adding a new employee", Toast.LENGTH_LONG).show();
             }
         }
@@ -117,10 +92,6 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), CreateEmployeeActivity.class);
 
-                //With an intent, you can attach information to an intent before you pass it
-                //intent.putExtra("name", "Thomas");
-
-                //startActivity(intent);
                 startActivityForResult(intent, ActivityCodes.CREATE_EMPLOYEE_REQUEST);
 
 
@@ -135,23 +106,8 @@ public class MainActivity extends AppCompatActivity {
         mList.add(e);
         e = new Employee("Tabassum Tayyab", "Lead QA Analyst", "WebMD Rx", "iOS & Android", "Hobby", 4);
         mList.add(e);
-//        mList.add("Employee");
-//        mList.add("Employee");
-//        mList.add("Employee");
-//        Intent click = getIntent();
-//        String passedName = click.getStringExtra("Name");
-//        String passedTitle = click.getStringExtra("Title");
-//        String passedRole = click.getStringExtra("Role");
-//        String passedTasks = click.getStringExtra("Tasks");
 
-//        Toast.makeText(getApplicationContext(),
-//                        passedName + " " +
-//                        passedTitle + " " +
-//                        passedRole + " " +
-//                        passedTasks,
-//                        Toast.LENGTH_LONG).show();
-
-                recyclerViewSetup();
+        recyclerViewSetup();
         mAdapter.updateAdapter(mList);
     }
 

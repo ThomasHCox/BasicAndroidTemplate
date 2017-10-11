@@ -56,13 +56,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.Recycl
         holder.title.setText(mList.get(position).getTitle());
         holder.role.setText(mList.get(position).getRole());
         holder.task.setText(mList.get(position).getTask());
-//        holder.deleteButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                mList.remove(position);
-//                notifyDataSetChanged();
-//            }
-//        });
+
 
 
     }

@@ -28,8 +28,6 @@ public class CreateEmployeeActivity extends Activity {
         EditText tasks = (EditText) findViewById(R.id.tasks_edit_text);
         EditText hobbies = (EditText) findViewById(R.id.hobbies_edit_text);
         EditText years = (EditText) findViewById(R.id.years_edit_text);
-//        Intent click = getIntent();
-//        String passedName = click.getStringExtra("name");
         ImageButton cancelButton = (ImageButton) findViewById(R.id.cancel_button);
 
         addEmployeeButton.setOnClickListener(new View.OnClickListener() {
@@ -38,35 +36,16 @@ public class CreateEmployeeActivity extends Activity {
                 Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                 Bundle bundle = new Bundle();
 
-             /*   intent.putExtra("Name",name.getText().toString());
-                intent.putExtra("Title",title.getText().toString());
-                intent.putExtra("Role",role.getText().toString());
-                intent.putExtra("Tasks",tasks.getText().toString());*/
-//                bundle.putString("Name",name.getText().toString());
-//                bundle.putString("Title",title.getText().toString());
-//                bundle.putString("Role",role.getText().toString());
-//                bundle.putString("Tasks",tasks.getText().toString());
-//                bundle.putString("Hobbies",hobbies.getText().toString());
-//                bundle.putInt("Years",Integer.parseInt(years.getText().toString()));
+
                 Employee e = new Employee(name.getText().toString(),
                         title.getText().toString(),
                         role.getText().toString(),
                         tasks.getText().toString(),
                         hobbies.getText().toString(),
                         Integer.parseInt((years.getText().toString())));
-//                intent.putExtras(bundle);
                 intent.putExtra("EmployeeParcel",e);
                 setResult(ActivityCodes.CREATE_EMPLOYEE_RESPONSE,intent);
                 finish();
-               // startActivity(clickIntent);
-
-//                Toast.makeText(getApplicationContext(),
-//                        name.getText().toString() + " " +
-//                        title.getText().toString() + " " +
-//                        role.getText().toString() + " " +
-//                        tasks.getText().toString(),
-//                        Toast.LENGTH_LONG).show();
-
             }
         });
 
