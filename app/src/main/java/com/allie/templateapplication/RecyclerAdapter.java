@@ -11,6 +11,7 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.allie.templateapplication.model.Employee;
+import com.allie.templateapplication.viewholders.EmployeeViewHolder;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,7 +20,7 @@ import java.util.List;
  * Created by acaldwell on 9/14/17.
  */
 
-public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.RecyclerViewHolder> {
+public class RecyclerAdapter extends RecyclerView.Adapter<EmployeeViewHolder> {
     private List<Employee> mList = new ArrayList<>();
     private Context mContext;
 
@@ -40,24 +41,30 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.Recycl
     }
 
     @Override
-    public RecyclerViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public EmployeeViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         mContext = parent.getContext();
         LayoutInflater inflater = LayoutInflater.from(mContext);
         View v = inflater.inflate(R.layout.recyclerview_item, parent, false);
-        RecyclerViewHolder holder = new RecyclerViewHolder(v);
+        EmployeeViewHolder holder = new EmployeeViewHolder(v);
 
         return holder;
     }
 
     @Override
-    public void onBindViewHolder(RecyclerViewHolder holder, int position) {
+    public void onBindViewHolder(EmployeeViewHolder holder, int position) {
         //set the text for each cell in the recyclerview from the list
-        holder.name.setText(mList.get(position).getName());
-        holder.title.setText(mList.get(position).getTitle());
-        holder.role.setText(mList.get(position).getRole());
-        holder.task.setText(mList.get(position).getTask());
 
 
+
+        holder.bind(mList.get(position), new View.OnClickListener(){
+
+            @Override
+            public void onClick(View view) {
+
+                mList.remove(position);
+                notifyDataSetChanged();
+            }
+        });
 
     }
 
@@ -73,51 +80,8 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.Recycl
         return mList.size();
     }
 
-    public class RecyclerViewHolder extends RecyclerView.ViewHolder {
-
-        public TextView name;
-        public TextView title;
-        public TextView role;
-        public TextView task;
-        public ImageButton deleteButton;
-        public View profileImage;
-
-        public RecyclerViewHolder(View itemView) {
-            super(itemView);
-            Context context = itemView.getContext();
-            name = (TextView) itemView.findViewById(R.id.text_view_name);
-            title = (TextView) itemView.findViewById(R.id.text_view_title);
-            role = (TextView) itemView.findViewById(R.id.text_view_role);
-            task = (TextView) itemView.findViewById(R.id.text_view_task);
-            deleteButton = (ImageButton) itemView.findViewById(R.id.delete_button);
-            profileImage = itemView.findViewById(R.id.user_icon);
-            deleteButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    mList.remove(getAdapterPosition());
-                    notifyDataSetChanged();
-                }
-            });
-
-            profileImage.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent intent = new Intent(context, ViewEmployeeActivity.class);
-                    Bundle bundle = new Bundle();
-                    bundle.putString("Name",mList.get(getAdapterPosition()).getName());
-                    bundle.putString("Title",mList.get(getAdapterPosition()).getTitle());
-                    bundle.putString("Role",mList.get(getAdapterPosition()).getRole());
-                    bundle.putString("Tasks",mList.get(getAdapterPosition()).getTask());
-                    bundle.putString("Hobbies",mList.get(getAdapterPosition()).getHobbies());
-                    bundle.putInt("Years",mList.get(getAdapterPosition()).getYears());
-                    intent.putExtras(bundle);
-                    context.startActivity(intent);
-                }
-            });
-
-        }
 
 
         //this might be a good place to add your onClickListener for the delete button
     }
-}
+

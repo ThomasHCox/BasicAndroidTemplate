@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.widget.TextView;
 
+import com.allie.templateapplication.model.Employee;
+
 /**
  * Created by tcox on 10/10/17.
  */
@@ -16,28 +18,20 @@ public class ViewEmployeeActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.view_employee_item);
         Intent i = getIntent();
-
-        Bundle bundle = i.getExtras();
-        String passedName = bundle.getString("Name");
-        String passedTitle = bundle.getString("Title");
-        String passedRole = bundle.getString("Role");
-        String passedTasks = bundle.getString("Tasks");
-        String passedHobbies = bundle.getString("Hobbies");
-        int passedYears = bundle.getInt("Years", 0);
-
+        Employee employee = i.getParcelableExtra("EmployeeParcel");
 
         TextView name = (TextView) findViewById(R.id.name_text);
-        name.setText(passedName);
+        name.setText(employee.getName());
         TextView title = (TextView) findViewById(R.id.title_text);
-        title.setText(passedTitle);
+        title.setText(employee.getTitle());
         TextView role = (TextView) findViewById(R.id.role_text);
-        role.setText(passedRole);
+        role.setText(employee.getRole());
         TextView tasks = (TextView) findViewById(R.id.tasks_text);
-        tasks.setText(passedTasks);
+        tasks.setText(employee.getTask());
         TextView hobbies = (TextView) findViewById(R.id.hobbies_text);
-        hobbies.setText(passedHobbies);
+        hobbies.setText(employee.getHobbies());
         TextView years = (TextView) findViewById(R.id.years_text);
-        years.setText(String.valueOf(passedYears));
+        years.setText(String.valueOf(employee.getYears()));
 //        years.setText(passedYears + " years worked");
 
 

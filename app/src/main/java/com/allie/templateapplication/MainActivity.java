@@ -52,6 +52,9 @@ import java.util.List;
 //Instead of sending individually in bundle
 //Put parcel in bundle and do it that way
 
+//Homework 7
+//Make sure this all still works
+
 public class MainActivity extends AppCompatActivity {
     private RecyclerAdapter mAdapter;
     private ActionBar mActionBar;
