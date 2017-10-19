@@ -14,6 +14,7 @@ import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.allie.templateapplication.constants.ActivityCodes;
+import com.allie.templateapplication.interfaces.IListener;
 import com.allie.templateapplication.model.Employee;
 
 import java.util.ArrayList;
@@ -54,6 +55,17 @@ import java.util.List;
 
 //Homework 7
 //Make sure this all still works
+
+//Homework 8
+//Create a second onClickListener that is passed to the RecyclerAdapter and then is passed to the
+//ViewHolder and then opens the activity.
+
+//Homework 9
+//Create a new class in your model folder called advertisement
+//Have one property called backgroundColor which is a string
+//Change the adapter so that you can add one of these advertisement objects to the list.
+//Set the color to a value
+
 
 public class MainActivity extends AppCompatActivity {
     private RecyclerAdapter mAdapter;
@@ -109,9 +121,12 @@ public class MainActivity extends AppCompatActivity {
         mList.add(e);
         e = new Employee("Tabassum Tayyab", "Lead QA Analyst", "WebMD Rx", "iOS & Android", "Hobby", 4);
         mList.add(e);
+        e = new Employee("Nick Bhatia", "Director of Mobile Engineering", "All apps", "iOS & Android", "Throwing Balls", 6);
+        mList.add(e);
 
         recyclerViewSetup();
         mAdapter.updateAdapter(mList);
+        mAdapter.addItem(e);
     }
 
     private void recyclerViewSetup() {
@@ -121,7 +136,14 @@ public class MainActivity extends AppCompatActivity {
         //pass in your list to the recyclerview adapter
         //RecyclerAdapter adapter = new RecyclerAdapter(list, this);
 
-        mAdapter = new RecyclerAdapter(this);
+        mAdapter = new RecyclerAdapter(this, new IListener() {
+            @Override
+            public void onListener(Employee employee) {
+                Intent intent = new Intent(getApplicationContext(), ViewEmployeeActivity.class);
+                intent.putExtra("EmployeeParcel", employee);
+                startActivity(intent);
+            }
+        });
         mRecyclerView.setAdapter(mAdapter);
     }
 

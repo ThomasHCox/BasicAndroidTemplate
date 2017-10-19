@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import com.allie.templateapplication.R;
 import com.allie.templateapplication.ViewEmployeeActivity;
+import com.allie.templateapplication.interfaces.IListener;
 import com.allie.templateapplication.model.Employee;
 
 /**
@@ -41,22 +42,19 @@ public class EmployeeViewHolder extends RecyclerView.ViewHolder {
 
 
 
-    public void bind (Employee employee, View.OnClickListener onClickListener){
+    public void bind (Employee employee, View.OnClickListener deleteButtonOnClickListener, IListener profileImageOnClickListener){
 
         name.setText(employee.getName());
         title.setText(employee.getTitle());
         role.setText(employee.getRole());
         task.setText(employee.getTask());
 
-        deleteButton.setOnClickListener(onClickListener);
-
+        deleteButton.setOnClickListener(deleteButtonOnClickListener);
 
         profileImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(mContext, ViewEmployeeActivity.class);
-                intent.putExtra("EmployeeParcel", employee);
-                mContext.startActivity(intent);
+                profileImageOnClickListener.onListener(employee);
             }
         });
 

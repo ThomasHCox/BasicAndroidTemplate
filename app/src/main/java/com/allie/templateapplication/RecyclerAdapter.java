@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import com.allie.templateapplication.interfaces.IListener;
 import com.allie.templateapplication.model.Employee;
 import com.allie.templateapplication.viewholders.EmployeeViewHolder;
 
@@ -23,10 +24,12 @@ import java.util.List;
 public class RecyclerAdapter extends RecyclerView.Adapter<EmployeeViewHolder> {
     private List<Employee> mList = new ArrayList<>();
     private Context mContext;
+    private IListener mListener;
 
-    public RecyclerAdapter(Context context) {
+    public RecyclerAdapter(Context context, IListener profileListener) {
 //        this.mList = list;
         this.mContext = context;
+        mListener = profileListener;
     }
 
     public void updateAdapter(List<Employee> list){
@@ -38,6 +41,10 @@ public class RecyclerAdapter extends RecyclerView.Adapter<EmployeeViewHolder> {
     public void appendAdapter(Employee e){
         mList.add(e);
         notifyDataSetChanged();
+    }
+
+    public void addItem(Employee e){
+        mList.add(e);
     }
 
     @Override
@@ -56,15 +63,15 @@ public class RecyclerAdapter extends RecyclerView.Adapter<EmployeeViewHolder> {
 
 
 
-        holder.bind(mList.get(position), new View.OnClickListener(){
+        holder.bind(mList.get(position), new View.OnClickListener() {
 
-            @Override
-            public void onClick(View view) {
+                    @Override
+                    public void onClick(View view) {
 
-                mList.remove(position);
-                notifyDataSetChanged();
-            }
-        });
+                        mList.remove(position);
+                        notifyDataSetChanged();
+                    }
+                }, mListener);
 
     }
 
