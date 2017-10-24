@@ -66,6 +66,9 @@ import java.util.List;
 //Change the adapter so that you can add one of these advertisement objects to the list.
 //Set the color to a value
 
+//Homework 10
+//Do the Code Academy Git lesson
+
 
 public class MainActivity extends AppCompatActivity {
     private RecyclerAdapter mAdapter;
