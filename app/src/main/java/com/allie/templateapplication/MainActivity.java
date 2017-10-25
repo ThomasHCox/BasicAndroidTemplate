@@ -126,10 +126,18 @@ public class MainActivity extends AppCompatActivity {
         mList.add(e);
         e = new Employee("Nick Bhatia", "Director of Mobile Engineering", "All apps", "iOS & Android", "Throwing Balls", 6);
         mList.add(e);
+        e = new Employee("Thomas Cox", "Mobile QA Manager", "Hot Mess Response Team", "Everything", "Hiking", 4);
+        mList.add(e);
+        e = new Employee("Rich Sauther", "Lead QA Analyst", "WebMD", "iOS", "Saving Money", 2);
+        mList.add(e);
+        e = new Employee("Tabassum Tayyab", "Lead QA Analyst", "WebMD Rx", "iOS & Android", "Hobby", 4);
+        mList.add(e);
+        e = new Employee("Nick Bhatia", "Director of Mobile Engineering", "All apps", "iOS & Android", "Throwing Balls", 6);
+        mList.add(e);
 
         recyclerViewSetup();
         mAdapter.updateAdapter(mList);
-        mAdapter.addItem(e);
+
     }
 
     private void recyclerViewSetup() {

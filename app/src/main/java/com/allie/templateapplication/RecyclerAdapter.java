@@ -60,9 +60,10 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         mViewHolderList.clear();
         if (getItemCount() > 2){
             Advertisement ads = new Advertisement("Red");
-            for (int i = 0; i > getItemCount(); i++){
-                if ((i>0) && (i%2==0)){
+            for (int i = 0; i < getItemCount(); i++){
+                if ((i>0) && ((i%2)==0)){
                     mViewHolderList.add(ads);
+                    mViewHolderList.add(mList.get(i));
                 }else{
                     mViewHolderList.add(mList.get(i));
                 }
@@ -97,16 +98,21 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         //set the text for each cell in the recyclerview from the list
 
 
+        if (holder instanceof EmployeeViewHolder) {
+            ((EmployeeViewHolder) holder).bind((Employee)mViewHolderList.get(position), new View.OnClickListener() {
 
-        ((EmployeeViewHolder)holder).bind(mList.get(position), new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
 
-                    @Override
-                    public void onClick(View view) {
+                    mViewHolderList.remove(position);
+                    notifyDataSetChanged();
+                }
+            }, mListener);
+        }
 
-                        mList.remove(position);
-                        notifyDataSetChanged();
-                    }
-                }, mListener);
+        if (holder instanceof AdViewHolder){
+            ((AdViewHolder) holder).bind((Advertisement)mViewHolderList.get(position));
+        }
 
     }
 
