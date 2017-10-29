@@ -23,7 +23,7 @@ public class AdViewHolder extends RecyclerView.ViewHolder{
     }
 
     public void bind(Advertisement advertisement){
-        mAdViewLayout.setBackgroundColor(444);
+//        mAdViewLayout.setBackground();
     }
 
 

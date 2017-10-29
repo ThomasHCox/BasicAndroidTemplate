@@ -54,13 +54,14 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
 
     public void addItem(Employee e){
         mList.add(e);
+        addAds();
     }
 
     public void addAds(){
         mViewHolderList.clear();
-        if (getItemCount() > 2){
+        if (mList.size() > 2){
             Advertisement ads = new Advertisement("Red");
-            for (int i = 0; i < getItemCount(); i++){
+            for (int i = 0; i < mList.size(); i++){
                 if ((i>0) && ((i%2)==0)){
                     mViewHolderList.add(ads);
                     mViewHolderList.add(mList.get(i));
@@ -132,10 +133,10 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
 
     @Override
     public int getItemCount() {
-        if (mList == null){
+        if (mViewHolderList == null){
            return 0;
         }
-        return mList.size();
+        return mViewHolderList.size();
     }
 
 
