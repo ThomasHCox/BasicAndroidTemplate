@@ -18,7 +18,7 @@ public class Advertisement implements Parcelable {
         mBackgroundColor = color;
     }
 
-    private String getColor(){
+    public String getColor(){
         return mBackgroundColor;
     }
 

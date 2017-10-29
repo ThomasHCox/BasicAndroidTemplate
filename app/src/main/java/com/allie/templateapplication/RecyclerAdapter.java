@@ -60,7 +60,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
     public void addAds(){
         mViewHolderList.clear();
         if (mList.size() > 2){
-            Advertisement ads = new Advertisement("Red");
+            Advertisement ads = new Advertisement("Green");
             for (int i = 0; i < mList.size(); i++){
                 if ((i>0) && ((i%2)==0)){
                     mViewHolderList.add(ads);

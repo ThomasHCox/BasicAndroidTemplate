@@ -1,5 +1,6 @@
 package com.allie.templateapplication.viewholders;
 
+import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
@@ -23,7 +24,10 @@ public class AdViewHolder extends RecyclerView.ViewHolder{
     }
 
     public void bind(Advertisement advertisement){
-//        mAdViewLayout.setBackground();
+        mAdViewLayout.setBackgroundColor(Color.parseColor(advertisement.getColor()));
+
+        mAdViewLayout.setVisibility(View.VISIBLE);
+
     }
 
 
