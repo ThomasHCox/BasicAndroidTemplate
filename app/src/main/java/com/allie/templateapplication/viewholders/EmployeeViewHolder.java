@@ -42,7 +42,7 @@ public class EmployeeViewHolder extends RecyclerView.ViewHolder {
 
 
 
-    public void bind (Employee employee, View.OnClickListener deleteButtonOnClickListener, IListener profileImageOnClickListener){
+    public void bind (Employee employee, View.OnClickListener deleteButtonOnClickListener, IListener    profileImageOnClickListener){
 
         name.setText(employee.getName());
         title.setText(employee.getTitle());
@@ -54,7 +54,7 @@ public class EmployeeViewHolder extends RecyclerView.ViewHolder {
         profileImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                profileImageOnClickListener.onListener(employee);
+                profileImageOnClickListener.onEmployeeListener(employee);
             }
         });
 

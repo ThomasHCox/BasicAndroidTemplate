@@ -15,6 +15,7 @@ import android.widget.Toast;
 
 import com.allie.templateapplication.constants.ActivityCodes;
 import com.allie.templateapplication.interfaces.IListener;
+import com.allie.templateapplication.model.Advertisement;
 import com.allie.templateapplication.model.Employee;
 
 import java.util.ArrayList;
@@ -69,6 +70,9 @@ import java.util.List;
 //Homework 10
 //Do the Code Academy Git lesson
 
+//Homework 11
+//The ad needs to have some text.
+//The text needs to say what color the ad is
 
 public class MainActivity extends AppCompatActivity {
     private RecyclerAdapter mAdapter;
@@ -149,9 +153,16 @@ public class MainActivity extends AppCompatActivity {
 
         mAdapter = new RecyclerAdapter(this, new IListener() {
             @Override
-            public void onListener(Employee employee) {
+            public void onEmployeeListener(Employee employee) {
                 Intent intent = new Intent(getApplicationContext(), ViewEmployeeActivity.class);
                 intent.putExtra("EmployeeParcel", employee);
+                startActivity(intent);
+            }
+
+            @Override
+            public void onAdListener(Advertisement advertisement) {
+                Intent intent = new Intent(getApplicationContext(), ViewAdActivity.class);
+                intent.putExtra("AdvertisementParcel", advertisement);
                 startActivity(intent);
             }
         });

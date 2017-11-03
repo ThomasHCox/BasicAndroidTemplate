@@ -1,14 +1,10 @@
 package com.allie.templateapplication;
 
 import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageButton;
-import android.widget.TextView;
 
 import com.allie.templateapplication.interfaces.IListener;
 import com.allie.templateapplication.model.Advertisement;
@@ -28,7 +24,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
     private List<Employee> mList = new ArrayList<>();
     private List<Object> mViewHolderList = new ArrayList<>();
     private Context mContext;
-    private IListener mListener;
+    private IListener mProfileListener;
     private static final int View_Type_Employee = 0;
     private static final int View_Type_Advertisement = 1;
     private static final int View_Type_Empty = 2;
@@ -36,7 +32,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
     public RecyclerAdapter(Context context, IListener profileListener) {
 //        this.mList = list;
         this.mContext = context;
-        mListener = profileListener;
+        mProfileListener = profileListener;
     }
 
     public void updateAdapter(List<Employee> list){
@@ -108,11 +104,11 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
                     mViewHolderList.remove(position);
                     notifyDataSetChanged();
                 }
-            }, mListener);
+            }, mProfileListener);
         }
 
         if (holder instanceof AdViewHolder){
-            ((AdViewHolder) holder).bind((Advertisement)mViewHolderList.get(position));
+            ((AdViewHolder) holder).bind((Advertisement)mViewHolderList.get(position), mProfileListener);
         }
 
     }

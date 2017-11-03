@@ -1,5 +1,6 @@
 package com.allie.templateapplication.interfaces;
 
+import com.allie.templateapplication.model.Advertisement;
 import com.allie.templateapplication.model.Employee;
 
 /**
@@ -7,5 +8,8 @@ import com.allie.templateapplication.model.Employee;
  */
 
 public interface IListener {
-    void onListener(Employee employee);
+
+    void onEmployeeListener(Employee employee);
+
+    void onAdListener(Advertisement advertisement);
 }
