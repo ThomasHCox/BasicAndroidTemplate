@@ -74,6 +74,15 @@ import java.util.List;
 //The ad needs to have some text.
 //The text needs to say what color the ad is
 
+//Homework 12
+//When you click on the ad and open the new ad activity
+//Have a recyclerview list of ads of different colors
+
+//Homework 13
+//Ignore 12, create a new project
+//Do 12, but in a whole new project, everything started from scratch
+//Use the modified ads with the centered header and text/color approach
+
 public class MainActivity extends AppCompatActivity {
     private RecyclerAdapter mAdapter;
     private ActionBar mActionBar;

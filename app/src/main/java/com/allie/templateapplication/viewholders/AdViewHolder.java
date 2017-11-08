@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.TextView;
 
 import com.allie.templateapplication.R;
 import com.allie.templateapplication.ViewAdActivity;
@@ -17,14 +18,14 @@ import com.allie.templateapplication.model.Advertisement;
 
 public class AdViewHolder extends RecyclerView.ViewHolder{
 
-    private View mAdViewLayout;
+    private TextView mAdViewLayout;
     private Context mContext;
 
 
     public AdViewHolder(View itemView) {
         super(itemView);
         mContext = itemView.getContext();
-        mAdViewLayout = itemView.findViewById(R.id.ad_view);
+        mAdViewLayout = (TextView) itemView.findViewById(R.id.ad_color);
 
 
     }
@@ -32,6 +33,7 @@ public class AdViewHolder extends RecyclerView.ViewHolder{
     public void bind(Advertisement advertisement, IListener adListener){
         mAdViewLayout.setBackgroundColor(Color.parseColor(advertisement.getColor()));
         mAdViewLayout.setVisibility(View.VISIBLE);
+        mAdViewLayout.setText(advertisement.getColor());
         mAdViewLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

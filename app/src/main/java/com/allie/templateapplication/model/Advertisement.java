@@ -9,9 +9,15 @@ import android.os.Parcelable;
 
 public class Advertisement implements Parcelable {
     private String mBackgroundColor;
+    private String mCompany;
 
-    public Advertisement(String color){
+    public Advertisement(String color, String company){
         mBackgroundColor = color;
+        mCompany = company;
+    }
+
+    public String getCompany(){
+        return mCompany;
     }
 
     private void setColor(String color){
@@ -30,10 +36,12 @@ public class Advertisement implements Parcelable {
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(this.mBackgroundColor);
+        dest.writeString(this.mCompany);
     }
 
     protected Advertisement(Parcel in) {
         this.mBackgroundColor = in.readString();
+        this.mCompany = in.readString();
     }
 
     public static final Creator<Advertisement> CREATOR = new Creator<Advertisement>() {
